@@ -3,7 +3,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/demo";
+  process.env.MONGODB_URI || "mongodb://mongo:27017/demo";
 const DB_NAME = "demo";
 const COLLECTION = "items";
 
@@ -55,6 +55,7 @@ app.post("/items", async (req, res) => {
 
 async function start() {
   await connectDb();
+  console.log("Connected to MongoDB");
 
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
